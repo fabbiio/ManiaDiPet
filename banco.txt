@@ -1,0 +1,284 @@
+
+
+CREATE TABLE `carrinho` (
+  `id` int(11) NOT NULL,
+  `cod_compra` int(11) NOT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade_produto` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+) ;
+
+--
+-- Despejando dados para a tabela `carrinho`
+--
+
+INSERT INTO `carrinho` (`id`, `cod_compra`, `id_produto`, `quantidade_produto`, `id_usuario`) VALUES
+(18, 0, 1, 1, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `contato`
+--
+
+CREATE TABLE `contato` (
+  `id` int(11) NOT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `mensagem` varchar(200) DEFAULT NULL
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `id` int(11) NOT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+);
+
+--
+-- Despejando dados para a tabela `favoritos`
+--
+
+INSERT INTO `favoritos` (`id`, `id_produto`, `id_usuario`) VALUES
+(4, 42, NULL),
+(5, 42, NULL),
+(6, 1, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `itens_pedido`
+--
+
+CREATE TABLE `itens_pedido` (
+  `id` int(11) NOT NULL,
+  `id_pedido` int(11) DEFAULT NULL,
+  `id_produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `paginacao`
+--
+
+CREATE TABLE `paginacao` (
+  `id` int(11) NOT NULL,
+  `cor_cabecalho` varchar(20) DEFAULT NULL,
+  `nome_site` varchar(20) DEFAULT NULL,
+  `imagem_title` varchar(20) DEFAULT NULL,
+  `imagem_icone` varchar(20) NOT NULL
+);
+
+--
+-- Despejando dados para a tabela `paginacao`
+--
+
+INSERT INTO `paginacao` (`id`, `cor_cabecalho`, `nome_site`, `imagem_title`, `imagem_icone`) VALUES
+(1, 'dodgerblue', 'ManiaDiPet', 'maniadipet.png', 'cachorro.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `data_pedido` date DEFAULT NULL
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produtos`
+--
+
+CREATE TABLE `produtos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(20) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `imagem_um` varchar(50) DEFAULT NULL,
+  `imagem_dois` varchar(50) NOT NULL,
+  `imagem_tres` varchar(50) NOT NULL,
+  `imagem_quatro` varchar(50) NOT NULL,
+  `descricao` varchar(500) DEFAULT NULL,
+  `categoria` varchar(50) NOT NULL,
+  `status` varchar(20) DEFAULT NULL
+);
+
+--
+-- Despejando dados para a tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `nome`, `valor`, `quantidade`, `imagem_um`, `imagem_dois`, `imagem_tres`, `imagem_quatro`, `descricao`, `categoria`, `status`) VALUES
+(1, 'Coleira Vermelhas', 50.50, 325, 'sem_imagem.jpeg', 'sem_imagem.jpeg', 'sem_imagem.jpeg', 'sem_imagem.jpeg', 'efefesfwrg 4gregreg rgrgrgs hgjdsgvjhw vewbkjhjfbvkrejvbu43ykehvhwnfeiuec jklhrv orhvigeiurvrogverbggerg', '', 'ativado'),
+(2, 'Cachorro Pelucia', 22.50, 11, 'sem_imagem.jpeg', 'sem_imagem', 'sem_imagem', 'sem_imagem', 'Pelucia macia feita de pelos de unicornio.', '', 'ativado'),
+(3, 'Racao 1', 70.00, 70, 'racao.png', 'sem_imagem', 'sem_imagem', 'sem_imagem', 'Racao Tipo 1 ', '', 'ativado'),
+(40, 'Bebedouro Cachorro', 20.00, 501, 'bebedouro.jpeg', 'bebedouro1.jpeg', 'bebedouro2.jpeg', 'bebedouro3.jpeg', 'Bebedouro para cachorro', 'Alimentos', 'desativado'),
+(42, 'Bebedouro Cachorro', 22.00, 22, 'bebedouro.jpeg', 'bebedouro1.jpeg', 'bebedouro2.jpeg', 'bebedouro3.jpeg', '22', 'Eletrônicos', 'ativado');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cpf` varchar(20) NOT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `cep` varchar(20) NOT NULL,
+  `cidade` varchar(20) NOT NULL,
+  `estado` varchar(2) NOT NULL,
+  `rua` varchar(20) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `bairro` varchar(30) DEFAULT NULL,
+  `complemento` varchar(50) DEFAULT NULL,
+  `referencia` varchar(50) DEFAULT NULL,
+  `senha` varchar(50) NOT NULL,
+  `data_cadastro` datetime DEFAULT NULL,
+  `compras` int(11) NOT NULL
+) ;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `cpf`, `data_nascimento`, `email`, `telefone`, `cep`, `cidade`, `estado`, `rua`, `numero`, `bairro`, `complemento`, `referencia`, `senha`, `data_cadastro`, `compras`) VALUES
+(8, 'Fabio Felipe', '14342615657', '1997-07-28', 'fabiofelipe788@gmail.com', '35984039274', '37650000', 'Camanducaia', 'MG', 'Rua Bom Jesus', 234, 'Centro', '', '', '10203040', '2024-11-07 11:36:22', 0),
+(9, 'fabricio', '11564215601', '1996-08-24', 'buslogextrema@gmail.com', '35991579144', '13240000', 'Jarinu', 'SP', 'rua contarini', 86, 'trieste', '', '', '12345678', '2024-11-07 12:19:02', 0),
+(10, 'Andre Luiz Da Cunha', '12618745604', '1995-09-06', 'andrecamanducaia@hotmail.com', '35984723627', '37650000', 'Camanducaia', 'MG', 'Rua do cruzeiro', 34, 'cruzeiro', '', '', '06091995', '2024-11-12 22:35:17', 0);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `carousel`
+--
+ALTER TABLE `carousel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `contato`
+--
+ALTER TABLE `contato`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `itens_pedido`
+--
+ALTER TABLE `itens_pedido`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pedido` (`id_pedido`),
+  ADD KEY `id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `paginacao`
+--
+ALTER TABLE `paginacao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Índices de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de tabela `contato`
+--
+ALTER TABLE `contato`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `favoritos`
+--
+ALTER TABLE `favoritos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `itens_pedido`
+--
+ALTER TABLE `itens_pedido`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `paginacao`
+--
+ALTER TABLE `paginacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
